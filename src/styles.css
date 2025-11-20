@@ -1,0 +1,49 @@
+.root{font-family:Inter,Segoe UI,system-ui,Roboto,Arial,sans-serif}
+body{margin:0;background:#051018;color:#eaf6ff}
+
+/* Primary action */
+.primary{background:#9bd3ff;color:#042033;border:none;padding:12px 16px;border-radius:10px;cursor:pointer;font-weight:600}
+.primary:hover{filter:brightness(0.95)}
+.primary:disabled{opacity:0.45;cursor:not-allowed}
+
+/* Cards for passenger select */
+.card{background:rgba(255,255,255,0.03);padding:14px;border-radius:10px;cursor:pointer;border:1px solid rgba(155,211,255,0.04);color:#e6eef8}
+.card h3{margin:0 0 6px 0}
+.card p{color:#cfe9f9}
+.card.selected{box-shadow:0 10px 30px rgba(0,0,0,0.6);border-color:rgba(155,211,255,0.16)}
+.card:focus{outline:2px solid rgba(155,211,255,0.14)}
+
+/* Choice buttons */
+.choice{background:rgba(155,211,255,0.02);padding:12px;border-radius:10px;border:1px solid rgba(155,211,255,0.04);cursor:pointer;text-align:left;color:#eaf6ff}
+.choice:hover{background:rgba(155,211,255,0.04)}
+.choice.selected{outline:3px solid rgba(155,211,255,0.12)}
+.choice:focus{outline:3px solid rgba(155,211,255,0.14)}
+
+h1{margin:0 0 8px 0;font-size:26px}
+h2{margin:0 0 8px 0;font-size:20px}
+p{margin:0 0 12px 0;color:#d6eaf8}
+
+/* Make the centered panel content more legible */
+.panel-content { color: #eaf6ff; }
+/* Heart indicator */
+.heart-indicator{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.heart-indicator .heart-label{font-size:12px;color:#bfe8ff}
+.heart-bar{display:flex;gap:6px}
+.heart-bar .seg{width:18px;height:8px;border-radius:4px;background:rgba(255,255,255,0.04)}
+.heart-bar .seg.active{background:#9bd3ff}
+
+/* Station backgrounds */
+.station-panel{padding:18px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.station-regret{background:linear-gradient(180deg,#07101a,#081424);border:1px solid rgba(255,255,255,0.02)}
+.station-unsent_messages{background:linear-gradient(180deg,#061022,#072033);border:1px solid rgba(155,211,255,0.02)}
+.station-beginning_again{background:linear-gradient(180deg,#08111b,#11303a);border:1px solid rgba(155,255,200,0.02)}
+
+/* Train hub carriage */
+.train-hub .carriage{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:12px;border-radius:10px}
+.car-slot{width:84px;height:84px;background:rgba(255,255,255,0.02);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.avatar{width:44px;height:44px;border-radius:6px;background:#9bd3ff;color:#042033;display:flex;align-items:center;justify-content:center;font-weight:700}
+.avatar.muted{background:rgba(255,255,255,0.04);color:#8aa6b8}
+@media (max-width:520px){
+  .card{padding:10px}
+  .primary{width:100%}
+}
