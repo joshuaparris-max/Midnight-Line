@@ -18,8 +18,8 @@ export function resetToTitle(): GameState {
 }
 
 export function startNewRun(passengerId: PassengerId): GameState {
-  // order fixed
-  const stationOrder: StationId[] = ['regret', 'unsent_messages', 'beginning_again'];
+  // order can be expanded for longer runs
+  const stationOrder: StationId[] = ['regret', 'unsent_messages', 'beginning_again', 'reflection', 'farewell', 'hope'];
   // find passenger
   const passenger = getPassenger(passengerId);
   // Start at the Train Hub before the first station

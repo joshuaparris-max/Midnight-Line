@@ -1,4 +1,4 @@
-export type PassengerId = 'burntout_nurse' | 'grieving_dad' | 'lonely_teen';
+export type PassengerId = 'burntout_nurse' | 'grieving_dad' | 'lonely_teen' | 'signaler' | 'wiper' | 'busker';
 
 export interface Passenger {
   id: PassengerId;
@@ -12,6 +12,36 @@ export interface Passenger {
 }
 
 const PASSENGERS: Record<PassengerId, Passenger> = {
+  signaler: {
+    id: 'signaler',
+    name: 'Signaler',
+    shortDescription: 'Keeps the lines clear, watching for trouble in the dark.',
+    prompts: {
+      fear: 'Missing a warning that matters.',
+      desire: 'To be trusted with the night.',
+      unsaid: "I wish someone would ask how I know what I know."
+    }
+  },
+  wiper: {
+    id: 'wiper',
+    name: 'Wiper',
+    shortDescription: 'Cleans the windows, hoping to see something new.',
+    prompts: {
+      fear: 'That nothing ever really changes.',
+      desire: 'To glimpse a new horizon.',
+      unsaid: "I keep hoping for a sign, but I only see my own reflection."
+    }
+  },
+  busker: {
+    id: 'busker',
+    name: 'Busker',
+    shortDescription: 'Plays music for the night shift, hoping someone listens.',
+    prompts: {
+      fear: 'Playing to an empty carriage forever.',
+      desire: 'To move someone, even once.',
+      unsaid: "I play the same song every night, but no one knows why."
+    }
+  },
   burntout_nurse: {
     id: 'burntout_nurse',
     name: 'Burnt-out Nurse',

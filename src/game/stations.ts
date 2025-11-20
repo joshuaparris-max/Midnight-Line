@@ -1,4 +1,4 @@
-export type StationId = 'regret' | 'unsent_messages' | 'beginning_again';
+export type StationId = 'regret' | 'unsent_messages' | 'beginning_again' | 'reflection' | 'farewell' | 'hope';
 
 export interface StationChoice {
   id: string;
@@ -16,6 +16,39 @@ export interface Station {
 }
 
 export const STATIONS: Record<StationId, Station> = {
+  reflection: {
+    id: 'reflection',
+    name: 'Reflection',
+    tagline: 'Windows show more than the night outside.',
+    introText: 'The carriage is quiet, glass fogged with breath and memory. Each window holds a different version of the journey.',
+    choices: [
+      { id: 'look_closer', label: 'Look closer at the reflection.', impactDelta: +1, description: 'A new detail emerges, something gentle and true.' },
+      { id: 'wipe_away', label: 'Wipe away the mist and move on.', impactDelta: 0, description: 'The view clears, but the feeling lingers.' },
+      { id: 'turn_away', label: 'Turn away from the window.', impactDelta: -1, description: 'The night outside feels a little colder.' }
+    ]
+  },
+  farewell: {
+    id: 'farewell',
+    name: 'Farewell',
+    tagline: 'A platform for goodbyes and new hellos.',
+    introText: 'Passengers shuffle, some leaving, some arriving. The air is thick with words unsaid and hands not shaken.',
+    choices: [
+      { id: 'wave', label: 'Wave goodbye with hope.', impactDelta: +1, description: 'A smile is returned, and the train feels lighter.' },
+      { id: 'stay_silent', label: 'Stay silent and watch.', impactDelta: 0, description: 'The moment passes, but something is learned.' },
+      { id: 'rush_off', label: 'Rush off before anyone notices.', impactDelta: -1, description: 'A door closes quickly, and the platform empties.' }
+    ]
+  },
+  hope: {
+    id: 'hope',
+    name: 'Hope',
+    tagline: 'First light hints at new journeys.',
+    introText: 'The train slows, and the horizon glows faintly. There is a sense that something good might be waiting.',
+    choices: [
+      { id: 'embrace', label: 'Embrace the new day.', impactDelta: +1, description: 'A breath is taken, and the future feels possible.' },
+      { id: 'hesitate', label: 'Hesitate at the threshold.', impactDelta: 0, description: 'The train waits, and so do you.' },
+      { id: 'retreat', label: 'Retreat into the carriage.', impactDelta: -1, description: 'The light dims, and the journey continues.' }
+    ]
+  },
   regret: {
     id: 'regret',
     name: 'Regret',

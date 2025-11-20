@@ -1,0 +1,903 @@
+﻿Moved to docs folder
+THE MIDNIGHT LINE
+Surreal urban fantasy on Aussie trains after dark
+Core Pitch
+After the last normal train stops, your line keeps going.
+From 12:01am to first light, the train carries:
+* souls and dreams,
+* half-finished prayers,
+* regrets that got left on voicemails,
+* and people who feel “stuck” without knowing why.
+You’re the crew of this midnight service.
+Your job isn’t to fight monsters.
+Your job is to quietly heal one person’s story… and they’ll never know you did.
+________________
+
+
+Who the Game Is “For”
+At the start of each run, the table chooses one person:
+* a burnt-out nurse on day shift,
+* a grieving dad,
+* a teenager who feels invisible,
+* a mum scrolling her phone in the dark,
+* a man on the verge of walking out.
+You write 3 prompts about them:
+* What they’re scared of.
+* What they deeply want.
+* What they’d never say out loud.
+You never meet them directly.
+The whole session is heaven’s “night-shift crew” working on their heart.
+________________
+
+
+________________
+Player Roles
+You’re not ordinary humans. You might be:
+* Conductors – keep the timetable of fate, punch metaphysical tickets.
+* Gatherers – collect unsent messages and lost thoughts.
+* Signalers – flip spiritual “points” to change where someone’s life tracks go.
+* Wipers – clean windows so people can see clearly for just a moment.
+* Buskers – songs, stories, or jokes that shift the emotional weather.
+Give each PC:
+* A Role (above).
+* A Uniform Quirk (e.g. hi-vis that glows with people’s worries; lanyard that lists their past lives; ticket punch that cuts out words).
+* A Private Wound that secretly mirrors the person you’re helping.
+________________
+
+
+________________
+Stations as States of Heart
+Each station is an emotional landscape, not just a place.
+Some examples:
+* REGRET
+
+   * Platforms cracked like old photo frames.
+   * Announcements glitch: “Next stop: If Only… If Only…”
+   * Encounters: ghosts of choices-not-taken, NPCs who want to rerun the same moment forever.
+   * BEGINNING AGAIN
+
+      * Graffiti slowly repainting itself into fresh colours.
+      * New saplings growing through the old asphalt.
+      * Encounters: people stepping off the wrong train trying to get back on track.
+      * UNSENT MESSAGES
+
+         * Air full of text bubbles and unsent emails floating like lanterns.
+         * Encounters: letters that chase you, voicemails that beg to be heard.
+         * THINGS I NEVER SAID TO MY DAD
+
+            * Platform benches like old loungerooms.
+            * TV screens showing footy games with the sound turned down.
+            * Encounters: “Dads” you can speak through, or confront, or forgive.
+You can add more:
+            * NUMB SCROLLING, SHAME, FIRST LOVE, HOSPITAL NIGHT SHIFT, CHURCH CAR PARK, etc.
+________________
+
+
+________________
+
+
+Core Mechanics (System-Agnostic)
+You can bolt this onto D&D, PBTA, or a custom system. Core loop:
+            1. Choose the Person – write their 3 prompts.
+            2. Choose 3–4 Stations – emotional beats that feel like their journey.
+            3. At each station, present:
+            * 1 Scene that expresses their inner world.
+            * 1–2 Choices for how the crew intervenes (talk, re-route, reveal, comfort, confront).
+            4. Impact Track:
+            * Have a simple track from Stuck → Wavering → Softened → Open → Turning Point.
+            * Good choices nudge it right, unhelpful ones nudge it left.
+            5. At the end of the run, you briefly narrate:
+            * A small, grounded change in their daytime life.
+            * e.g. they text someone, they book counselling, they turn back from the door, they finally sleep.
+Combat:
+            * Rare, metaphorical.
+            * “Monsters” are things like:
+            * The Algorithm (keeps people numb).
+            * The Old Script (“you’re useless”, “you’re too much”).
+            * The Fog (dissociation).
+Winning isn’t killing them; it’s breaking their grip on the passenger’s story.
+________________
+
+
+________________
+Example Session Skeleton
+Person: Burnt-out paediatric nurse, living on servo coffee and sheer will.
+Stations:
+            1. Hospital Night Shift – fluorescent lights humming; passengers wear wristbands.
+            2. Unsent Messages – all the texts she never sent to friends, church, family.
+            3. Things I Never Said to My Dad – her expectations & internal critic.
+            4. Beginning Again – a small, clean platform with dawn light.
+At each station, the crew:
+            * meets echoes of her (you never say it’s her, but it’s obvious to the players),
+            * makes one key intervention: a memory, a chance, a release.
+End scene:
+She wakes up before her alarm, message drafted to a friend: “Hey, I’m not okay. Can we talk?”
+________________
+
+
+How You Could Use This
+            * As a one-shot D&D reskin:
+            * Use your usual dice and skill checks, just change the fiction.
+            * As a text RPG:
+            * Very natural fit for a branching narrative / Twine / TypeScript engine like Whispering Wilds.
+            * As a gentle youth-group or men’s-group story tool:
+            * Run it almost rules-light, letting people project bits of themselves into the passenger.
+________________
+
+
+If you want, next step I can:
+            * give you a tiny encounter script for one station (boxed text + choices),
+or
+            * sketch out how you’d structure this as a browser-based text game (files, scenes, state).
+________________
+
+
+Alright, this is honestly begging to be a prestige indie.
+Here’s THE MIDNIGHT LINE as a proper AAA-indie game concept, plus what it needs in scope, systems, and polish to stand alongside the big narrative indies.
+________________
+
+
+1. High-Level Concept
+Title: The Midnight Line
+Genre: Narrative adventure / emotional roguelite / light RPG
+Perspective: 2.5D side-on exploration on the train and platforms (like Spiritfarer/Oxenfree vibes).
+Tone: Surreal urban fantasy, gentle horror of the heart, hopeful ending. Aussie specificity.
+Core Fantasy:
+ You’re the night-shift crew of a secret after-hours train line. Every night, from 12:01am to first light, you quietly intervene in one stranger’s life by travelling through stations that are their inner world. You never meet them directly. You just nudge their heart.
+Winning isn’t “beating” anything. It’s that the next morning, in the real world, they take one small, holy step: sending a text, calling someone back, walking back through the door.
+________________
+
+
+________________
+2. Pillars (What Makes It AAA-Indie-Worthy)
+               1. Deep, Replayable Emotional Stories
+
+                  * Each run = a different person (burnt-out nurse, grieving dad, teen, mum in the dark, man about to leave).
+
+                  * Their Fear / Deep Desire / Unspoken Secret drive the whole night’s stations and events.
+
+                  * Combo of authored story arcs and procedural remixing for longevity.
+
+                     2. Crew-Based Play
+
+                        * You control a small crew (e.g. 2–3 active characters on a run):
+
+                           * Conductor – fate/timetable manipulation.
+
+                           * Gatherer – collects unsent messages, memory fragments.
+
+                           * Signaler – switches “life tracks” at key moments.
+
+                           * Wiper – clears perception (windows, mirrors, screens).
+
+                           * Busker – shifts emotional climate with stories and songs.
+
+                              * Each has abilities, skill trees, and a Private Wound that thematically mirrors the night’s passenger.
+
+                                 3. Stations as Emotional Biomes
+
+                                    * Fully-realised, animated stations like:
+
+                                       * REGRET, UNSENT MESSAGES, HOSPITAL NIGHT SHIFT, CHURCH CAR PARK, NUMB SCROLLING, THINGS I NEVER SAID TO MY DAD, etc.
+
+                                          * Each biome has:
+
+                                             * A distinct visual grammar.
+
+                                             * Its own “monsters” (metaphors like The Algorithm, The Old Script, The Fog).
+
+                                             * Environmental puzzles and dialog scenes that embody one emotional beat.
+
+                                                4. The Impact Track (Heart-State System)
+
+                                                   * A visible but diegetic gauge (e.g. a driver’s console with an old analog dial) from:
+
+                                                      * Stuck → Wavering → Softened → Open → Turning Point
+
+                                                         * Every intervention nudges it.
+
+                                                         * Push too hard? It can snap back or shut down.
+
+                                                            5. Non-Violent “Combat”
+
+                                                               * Encounters with The Algorithm, Old Script, Fog etc.
+
+                                                               * Resolved with:
+
+                                                                  * Choices of words.
+
+                                                                  * Timing.
+
+                                                                  * Use of crew abilities.
+
+                                                                  * Sacrificing comfort/routine to offer truth or rest.
+
+                                                                     * You “win” by loosening their grip, not killing them.
+
+________________
+
+
+________________
+3. Moment-to-Moment Gameplay
+On the Train (Hub)
+                                                                        * Walk through carriages in 2.5D.
+
+                                                                        * Talk to echo-passengers (fragments of the Person).
+
+                                                                        * Use crew abilities:
+
+                                                                           * Conductor adjusts the timetable: slowing/speeding the night, reordering stations.
+
+                                                                           * Gatherer pulls unsent messages out of phones and air.
+
+                                                                           * Busker plays songs/stories that shift mood.
+
+                                                                              * Choose next station from a branching rail map—each choice implies a different emotional beat.
+
+________________
+At a Station (Scene)
+                                                                                 1. Arrival
+
+                                                                                    * Short cinematic: vibe of the station (Regret’s cracked platforms, Unsent Messages’ floating text bubbles, etc.).
+
+                                                                                       2. Exploration
+
+                                                                                          * Walk, talk, inspect items, pick up emotional “artifacts” (photos, voicemails, childhood objects).
+
+                                                                                             3. Key Encounter
+
+                                                                                                * An echo of the Person (or someone representing them: a Dad, a ward nurse, a church elder, a schoolyard).
+
+                                                                                                * Dialogue tree + crew abilities.
+
+                                                                                                   4. Intervention Choice
+
+                                                                                                      * Multiple approaches: comfort, confrontation, re-routing, revealing truth, making space, clearing fog.
+
+                                                                                                         5. Impact
+
+                                                                                                            * Heart-State dial shifts.
+
+                                                                                                            * Visuals subtly change (lights brighten, graffiti repainting, fog thinning).
+
+You do this across 3–5 stations per night, then return to the train for a final choice and an epilogue.
+________________
+
+
+________________
+4. Run Structure & Meta-Progression
+A Single Night (One “Run”)
+                                                                                                               * Act 1 – Setup
+
+                                                                                                                  * The system (or player) defines the Person:
+
+                                                                                                                     * Archetype (e.g. burnt-out nurse).
+
+                                                                                                                     * 3 hidden traits: Fear / Deep Want / Never-Said-Out-Loud.
+
+                                                                                                                     * Starting Heart State (usually Stuck/Wavering).
+
+                                                                                                                        * Act 2 – Journey
+
+                                                                                                                           * You pick stations, navigate encounters, and manage the Impact Track.
+
+                                                                                                                              * Act 3 – Dawn
+
+                                                                                                                                 * Short, grounded epilogue:
+
+                                                                                                                                    * A specific, small change in the Person’s behaviour the next day.
+
+                                                                                                                                       * You never see their face directly. Just glimpses (phone screen, back of head on tram, etc.).
+
+________________
+Between Nights (Meta Layer)
+                                                                                                                                          * Crew Upgrades
+
+                                                                                                                                             * New abilities (e.g. Wiper learns to clear not just windows but mirrors and screens).
+
+                                                                                                                                             * Deeper Uniform Quirks (e.g. Busker’s guitar now reveals hidden memories when they play).
+
+                                                                                                                                             * Healing their own Private Wounds through side stories.
+
+                                                                                                                                                * Unlocking New Stations & Monsters
+
+                                                                                                                                                   * As you successfully support more passengers, new emotional biomes appear on the map (SHAME, FIRST LOVE, “MUM MODE”, etc.).
+
+                                                                                                                                                   * New metaphorical monsters (The Hustle, The Black Hole, The Good Girl, The Stoic Bloke).
+
+                                                                                                                                                      * The Bigger Mystery
+
+                                                                                                                                                         * Who runs this train line? Who are you really?
+
+                                                                                                                                                         * Multi-run meta-story about the origin of The Midnight Line, the Dispatcher, and what happens when your crew finally faces their own unresolved story.
+
+________________
+
+
+________________
+5. Player Roles as Fully-Fledged Playstyles
+Each role isn’t just flavour—they change how you solve problems.
+                                                                                                                                                            * Conductor (Control / Planning)
+
+                                                                                                                                                               * Abilities that reorder stations, delay/advance certain events, and “hold” the night a bit longer.
+                                                                                                                                                               * Skill tree: Timetable (macro route control), Tickets (1:1 interventions), Delays (slowing down harmful scripts).
+
+                                                                                                                                                                  * Gatherer (Memory / Info)
+
+                                                                                                                                                                     * Sees floating message fragments others can’t.
+                                                                                                                                                                     * Can reconstruct key scenes from scattered clues.
+                                                                                                                                                                     * Skill tree: Inbox (texts & emails), Archive (old memories), Overflow (church prayers, journal entries).
+
+                                                                                                                                                                        * Signaler (Branching Paths)
+
+                                                                                                                                                                           * Interacts with “junctions” in the Person’s life.
+
+                                                                                                                                                                           * Can temporarily open alternate timelines/what-ifs.
+
+                                                                                                                                                                           * Skill tree: Points (binary choices), Divergence (hidden third paths), Reconnect (relink broken relationships).
+
+                                                                                                                                                                              * Wiper (Clarity / Perception)
+
+                                                                                                                                                                                 * Wipes mist from windows, grime from mirrors, static from screens.
+
+                                                                                                                                                                                 * Reveals hidden NPC motives or lies.
+
+                                                                                                                                                                                 * Skill tree: Glass (external clarity), Mirror (self-clarity), Screen (media/algorithm clarity).
+
+                                                                                                                                                                                    * Busker (Emotion / Atmosphere)
+
+                                                                                                                                                                                       * Live “AOE” emotional shifts: calming anxious mobs, emboldening a scared echo, softening a hard crowd.
+
+                                                                                                                                                                                       * Skill tree: Songs (mood), Stories (perspective), Banter (disarming defences).
+
+You choose a party each run; synergy between your crew shapes how you approach healing.
+________________
+
+
+6. Stations as AAA-Level Content
+Each major Station type = almost its own mini-biome with:
+                                                                                                                                                                                          * Unique music themes & sound design.
+
+                                                                                                                                                                                          * Local NPC archetypes.
+
+                                                                                                                                                                                          * Environmental story puzzles.
+
+Example:
+HOSPITAL NIGHT SHIFT
+                                                                                                                                                                                             * White noise, buzzing fluorescents, beeping monitors.
+
+                                                                                                                                                                                             * NPCs: numb nurses, parent-shadows, exhausted doctors.
+
+                                                                                                                                                                                             * Monsters: The Clipboard (endless tasks), The Code Blue (flashbacks), The Never-Empty Waiting Room.
+
+                                                                                                                                                                                             * Puzzles: Do you give a nurse rest, or help a parent stay present? You can’t do everything—your choice has cost.
+
+THINGS I NEVER SAID TO MY DAD
+                                                                                                                                                                                                * Long benches as lounge rooms, TVs with footy and muted news.
+
+                                                                                                                                                                                                * NPCs: different “Dads” (jokey, silent, harsh, absent).
+
+                                                                                                                                                                                                * Encounters: you can “borrow” a Dad to say something through, or unlearn an internal Dad-voice.
+
+All of this is designed to be shippable at indie AAA quality—so fewer, richer biomes rather than endless shallow ones.
+________________
+
+
+________________
+7. Presentation: Visual + Audio
+Visual Style
+                                                                                                                                                                                                   * 2.5D side-scroller with depth parallax.
+
+                                                                                                                                                                                                   * Hand-painted, stylised Aussie suburban/urban rail + liminal dream spaces.
+
+                                                                                                                                                                                                   * Strong use of light vs dark:
+
+                                                                                                                                                                                                      * Platform lights with halos.
+
+                                                                                                                                                                                                      * Train carriage windows glowing like small moving churches.
+
+                                                                                                                                                                                                         * UI is in-world:
+
+                                                                                                                                                                                                            * Ticket punches show dialogue options.
+
+                                                                                                                                                                                                            * Impact Track is a dial on the driver’s console.
+
+                                                                                                                                                                                                            * Unsents float like AR thought-bubbles outside the train.
+
+Audio
+                                                                                                                                                                                                               * Dynamic original score:
+
+                                                                                                                                                                                                                  * Soft piano, ambient synth, train clacks, distant Aussie wildlife at night.
+
+                                                                                                                                                                                                                  * Each Station has a musical motif.
+
+                                                                                                                                                                                                                     * Busker music system:
+
+                                                                                                                                                                                                                        * When you play as Busker, your chosen theme slightly remixes the soundtrack (so your choice feels embodied).
+
+                                                                                                                                                                                                                           * High-quality voice acting for key echoes and crew, with lots of silence and space left in.
+
+________________
+
+
+________________
+8. What It “Takes” To Make This AAA-Indie
+1. Systems & Tech
+                                                                                                                                                                                                                              * Narrative Engine
+
+                                                                                                                                                                                                                                 * Needs a custom system (or heavy use of Ink/Yarn/etc.) to:
+
+                                                                                                                                                                                                                                    * Combine Archetype + Fear/Want/Secret into a coherent night arc.
+
+                                                                                                                                                                                                                                    * Bind scenes to Stations and keep emotional continuity.
+
+                                                                                                                                                                                                                                       * Support for conditional epilogues that feel personal and grounded.
+
+                                                                                                                                                                                                                                          * Stateful Emotional Logic
+
+                                                                                                                                                                                                                                             * Heart-State as a proper state machine affecting:
+
+                                                                                                                                                                                                                                                * NPC dialogue.
+
+                                                                                                                                                                                                                                                * Visual saturation/light.
+
+                                                                                                                                                                                                                                                * How “hard” monsters hit.
+
+                                                                                                                                                                                                                                                   * Tooling
+
+                                                                                                                                                                                                                                                      * Internal tools for writers/designers to:
+
+                                                                                                                                                                                                                                                         * Define new Station types.
+
+                                                                                                                                                                                                                                                         * Plug in new passenger archetypes.
+
+                                                                                                                                                                                                                                                         * Tweak Impact weights and branching outcomes without coding.
+
+________________
+2. Content
+                                                                                                                                                                                                                                                            * Dozens of:
+
+                                                                                                                                                                                                                                                               * Passenger archetypes.
+
+                                                                                                                                                                                                                                                               * Station biomes.
+
+                                                                                                                                                                                                                                                               * Monsters (scripts, algorithms, fogs).
+
+                                                                                                                                                                                                                                                               * Crew upgrades & personal side stories.
+
+                                                                                                                                                                                                                                                                  * This is writing-heavy:
+
+                                                                                                                                                                                                                                                                     * You’d want at least one lead writer + supporting writers, plus good editing.
+
+3. Team Scope
+Roughly (for a 2–3 year dev cycle):
+                                                                                                                                                                                                                                                                        * 1 Creative Director / Narrative Director.
+
+                                                                                                                                                                                                                                                                        * 1–2 Game Designers (systems + narrative).
+
+                                                                                                                                                                                                                                                                        * 2–3 Programmers (gameplay, tools, engine work).
+
+                                                                                                                                                                                                                                                                        * 2–3 Artists (backgrounds, characters, UI/UX).
+
+                                                                                                                                                                                                                                                                        * 1 Technical Artist / VFX.
+
+                                                                                                                                                                                                                                                                        * 1 Composer + 1 Sound Designer.
+
+                                                                                                                                                                                                                                                                        * Contract voice actors.
+
+                                                                                                                                                                                                                                                                        * QA + Producer.
+
+Small enough for indie, big enough for real polish.
+________________
+4. Accessibility & Safeguards
+Because it touches grief, burnout, depression:
+                                                                                                                                                                                                                                                                           * Content warnings and toggles.
+
+                                                                                                                                                                                                                                                                           * Option to keep it “soft” (no explicit reference to self-harm, etc.).
+
+                                                                                                                                                                                                                                                                           * End-of-run “support resources” link (subtle, not preachy).
+
+________________
+
+
+________________
+9. Example: The Nurse Run as a AAA-Indie Level
+You already wrote the skeleton. In a shipped game, that one run could look like:
+                                                                                                                                                                                                                                                                              * Opening Cutscene:
+
+                                                                                                                                                                                                                                                                                 * Phone alarm at 5:30am, servo coffee, hospital corridors in montage. Smash cut: train lights flick on at 12:01am.
+
+                                                                                                                                                                                                                                                                                    * Stations:
+
+                                                                                                                                                                                                                                                                                       * Hospital Night Shift
+
+                                                                                                                                                                                                                                                                                       * Unsent Messages
+
+                                                                                                                                                                                                                                                                                       * Things I Never Said to My Dad
+
+                                                                                                                                                                                                                                                                                       * Beginning Again
+
+                                                                                                                                                                                                                                                                                          * Core Decisions:
+
+                                                                                                                                                                                                                                                                                             * Do you let her drop one shift (short-term guilt, long-term healing)?
+
+                                                                                                                                                                                                                                                                                             * Do you show her a memory of being cared for as a child?
+
+                                                                                                                                                                                                                                                                                             * Do you expose the lie “you’re only valuable if you’re useful” in a direct confrontation with The Old Script?
+
+                                                                                                                                                                                                                                                                                                * Ending:
+
+                                                                                                                                                                                                                                                                                                   * She wakes, drafts “Hey, I’m not okay. Can we talk?”
+
+                                                                                                                                                                                                                                                                                                   * If your Heart-State track was high, she actually hits “Send” in the epilogue.
+
+Fully animated, scored, voiced, with your crew quietly watching from a station bench only we see.
+________________
+
+
+If you like this direction, next I can turn this into a concrete design doc outline for you + a first AI-autocoder prompt to start prototyping a tiny vertical slice (one crew member, one station, one mini-passenger story) in your preferred engine.
+________________
+
+
+Beautiful. Let’s make this something you can actually build, not just vibe about.
+I’ll give you:
+                                                                                                                                                                                                                                                                                                      1. A compact design doc outline you can paste into Notion/Docs.
+
+                                                                                                                                                                                                                                                                                                      2. A crisp vertical slice spec.
+
+                                                                                                                                                                                                                                                                                                      3. A ready-to-paste AI autocoder prompt (for Cursor / VS Code / Windsurf etc.) to start coding.
+
+________________
+
+
+1. Design Doc Outline – The Midnight Line
+You can copy-paste this as your GDD skeleton and fill in later.
+1. High Concept
+                                                                                                                                                                                                                                                                                                         * Title: The Midnight Line
+
+                                                                                                                                                                                                                                                                                                         * One-Line Pitch:
+ A surreal Aussie-night-train narrative adventure where a ghostly crew quietly heals one stranger’s heart each night by travelling through stations that are their inner world.
+
+                                                                                                                                                                                                                                                                                                         * Genre: Narrative adventure / emotional roguelite / light RPG
+
+                                                                                                                                                                                                                                                                                                         * Platform Targets: PC + consoles ( Switch, PS5, Xbox Series ), later Steam Deck.
+
+2. Core Pillars
+                                                                                                                                                                                                                                                                                                            * Non-violent healing gameplay – the win-state is a small change in someone’s real life.
+
+                                                                                                                                                                                                                                                                                                            * Stations as emotional biomes – REGRET, UNSENT MESSAGES, HOSPITAL NIGHT SHIFT, etc.
+
+                                                                                                                                                                                                                                                                                                            * Crew synergy – Conductor / Gatherer / Signaler / Wiper / Busker with complementary abilities.
+
+                                                                                                                                                                                                                                                                                                            * Repeatable nights – new person, same train, evolving meta-story.
+
+                                                                                                                                                                                                                                                                                                            * Grounded Aussie flavour – V/Line vibes, servo coffee, footy on muted TVs, church car parks.
+
+3. Gameplay Overview
+                                                                                                                                                                                                                                                                                                               * Structure per run:
+
+                                                                                                                                                                                                                                                                                                                  * Pick / roll a Passenger archetype (nurse, grieving dad, invisible teen, etc.).
+
+                                                                                                                                                                                                                                                                                                                  * System defines/rolls their Fear / Deep Want / Never-Said-Out-Loud.
+
+                                                                                                                                                                                                                                                                                                                  * Choose a crew party (2–3 roles).
+
+                                                                                                                                                                                                                                                                                                                  * Travel through 3–5 Stations (emotional biomes).
+
+                                                                                                                                                                                                                                                                                                                  * Resolve encounters and nudge the Impact Track (Stuck→Turning Point).
+
+                                                                                                                                                                                                                                                                                                                  * Watch a grounded epilogue next morning.
+
+                                                                                                                                                                                                                                                                                                                     * Moment-to-moment:
+
+                                                                                                                                                                                                                                                                                                                        * 2.5D exploration on train + platforms.
+
+                                                                                                                                                                                                                                                                                                                        * Dialog choices.
+
+                                                                                                                                                                                                                                                                                                                        * Light environmental puzzles.
+
+                                                                                                                                                                                                                                                                                                                        * “Combat” as metaphorical confrontations with The Algorithm, Old Script, Fog, etc.
+
+4. Systems
+                                                                                                                                                                                                                                                                                                                           * Impact Track / Heart-State System
+
+                                                                                                                                                                                                                                                                                                                              * Global state per run.
+
+                                                                                                                                                                                                                                                                                                                              * Affects dialogue, visuals, music, and final epilogue.
+
+                                                                                                                                                                                                                                                                                                                                 * Crew Abilities & Progression
+
+                                                                                                                                                                                                                                                                                                                                    * Each role has:
+
+                                                                                                                                                                                                                                                                                                                                       * Active abilities (e.g. Conductor: re-order next station; Busker: calm crowd).
+
+                                                                                                                                                                                                                                                                                                                                       * Passive perks (e.g. Gatherer sees extra message fragments).
+
+                                                                                                                                                                                                                                                                                                                                       * Personal “Private Wound” questline.
+
+                                                                                                                                                                                                                                                                                                                                          * Passenger Generator
+
+                                                                                                                                                                                                                                                                                                                                             * Archetype templates.
+
+                                                                                                                                                                                                                                                                                                                                             * Parameters: Fear, Want, Secret, baseline Heart-State.
+
+                                                                                                                                                                                                                                                                                                                                             * Hooks into station selection + event variants.
+
+                                                                                                                                                                                                                                                                                                                                                * Station System
+
+                                                                                                                                                                                                                                                                                                                                                   * Each station type defines:
+
+                                                                                                                                                                                                                                                                                                                                                      * Visual profile & layout.
+
+                                                                                                                                                                                                                                                                                                                                                      * Local NPC types.
+
+                                                                                                                                                                                                                                                                                                                                                      * Possible events/encounters.
+
+                                                                                                                                                                                                                                                                                                                                                      * Potential Impact Track deltas.
+
+5. Narrative & Structure
+                                                                                                                                                                                                                                                                                                                                                         * Per-Run Story:
+
+                                                                                                                                                                                                                                                                                                                                                            * 3–5 stations as emotional beats (Setup → Confront → Release → Beginning Again).
+
+                                                                                                                                                                                                                                                                                                                                                            * No direct meeting; only echoes and representations.
+
+                                                                                                                                                                                                                                                                                                                                                               * Meta-Narrative:
+
+                                                                                                                                                                                                                                                                                                                                                                  * Gradual reveal: Who runs The Midnight Line? Who are the crew really?
+
+                                                                                                                                                                                                                                                                                                                                                                  * Long-form arcs for each crew member’s Private Wound.
+
+                                                                                                                                                                                                                                                                                                                                                                  * Rare “Special Nights” that tie into the crew’s own stories.
+
+6. Aesthetic
+                                                                                                                                                                                                                                                                                                                                                                     * Art Direction:
+
+                                                                                                                                                                                                                                                                                                                                                                        * Stylised 2.5D; painterly but readable; emphasis on light, reflection, liminal spaces.
+
+                                                                                                                                                                                                                                                                                                                                                                        * Strong station identities (colour palettes, iconography, recurring motifs).
+
+                                                                                                                                                                                                                                                                                                                                                                           * Audio Direction:
+
+                                                                                                                                                                                                                                                                                                                                                                              * Piano + ambient synth + train rhythm.
+
+                                                                                                                                                                                                                                                                                                                                                                              * Themes per Station.
+
+                                                                                                                                                                                                                                                                                                                                                                              * Busker can modulate soundtrack in real-time.
+
+7. Tech & Tools
+                                                                                                                                                                                                                                                                                                                                                                                 * Engine: (TBD by you – e.g. Godot / Unity / custom TS+Web stack).
+
+                                                                                                                                                                                                                                                                                                                                                                                 * Scripting: Node-based narrative / Ink / Yarn or custom JSON narrative format.
+
+                                                                                                                                                                                                                                                                                                                                                                                 * Internal Tools:
+
+                                                                                                                                                                                                                                                                                                                                                                                    * Passenger editor.
+
+                                                                                                                                                                                                                                                                                                                                                                                    * Station/encounter editor.
+
+                                                                                                                                                                                                                                                                                                                                                                                    * Impact tuning view.
+
+8. Production Plan
+                                                                                                                                                                                                                                                                                                                                                                                       * Milestone 0: Vertical slice (one passenger, two stations, one crew member).
+
+                                                                                                                                                                                                                                                                                                                                                                                       * Milestone 1: Full “Nurse Night” with 2–3 crew roles.
+
+                                                                                                                                                                                                                                                                                                                                                                                       * Milestone 2: Content expansion (more passengers, stations, monsters).
+
+                                                                                                                                                                                                                                                                                                                                                                                       * Milestone 3: Meta-story, polish, console ports.
+
+________________
+
+
+2. Vertical Slice Spec (What to Build First)
+Goal: A 15–25 minute playable “night” that proves the core loop.
+Scope
+                                                                                                                                                                                                                                                                                                                                                                                          * Passenger: Burnt-out paediatric nurse.
+
+                                                                                                                                                                                                                                                                                                                                                                                          * Crew: 1 playable crew role (Conductor) + 1 support role (Gatherer, mostly narrative flavour).
+
+                                                                                                                                                                                                                                                                                                                                                                                          * Stations:
+
+                                                                                                                                                                                                                                                                                                                                                                                             * Hospital Night Shift (core station).
+
+                                                                                                                                                                                                                                                                                                                                                                                             * Unsent Messages (secondary station).
+
+                                                                                                                                                                                                                                                                                                                                                                                                * Core Systems Implemented:
+
+                                                                                                                                                                                                                                                                                                                                                                                                   * Simple hub train scene (walk left/right; talk to Gatherer).
+
+                                                                                                                                                                                                                                                                                                                                                                                                   * Station selection: pick Hospital, then Unsent Messages.
+
+                                                                                                                                                                                                                                                                                                                                                                                                   * Exploration on platforms.
+
+                                                                                                                                                                                                                                                                                                                                                                                                   * A couple of dialogue encounters per station.
+
+                                                                                                                                                                                                                                                                                                                                                                                                   * Impact Track (3–5 states) displayed as a simple dial or bar.
+
+                                                                                                                                                                                                                                                                                                                                                                                                   * Choices that clearly move the Impact Track up/down.
+
+                                                                                                                                                                                                                                                                                                                                                                                                   * Ending epilogue cut-scene: she drafts “Hey, I’m not okay. Can we talk?” (variant text based on Impact Track).
+
+Visual & Audio Level for Slice
+                                                                                                                                                                                                                                                                                                                                                                                                      * Simple but cohesive:
+
+                                                                                                                                                                                                                                                                                                                                                                                                         * Flat-colour 2D backgrounds, basic parallax.
+
+                                                                                                                                                                                                                                                                                                                                                                                                         * Minimal animation (idle, walk, a few FX like flickering lights).
+
+                                                                                                                                                                                                                                                                                                                                                                                                            * Placeholder audio is fine as long as:
+
+                                                                                                                                                                                                                                                                                                                                                                                                               * There is a distinct ambience for hospital vs. unsent messages.
+
+“Done” Criteria
+                                                                                                                                                                                                                                                                                                                                                                                                                  * Player can:
+
+                                                                                                                                                                                                                                                                                                                                                                                                                     1. Start a new night.
+
+                                                                                                                                                                                                                                                                                                                                                                                                                     2. Read a short intro establishing the nurse.
+
+                                                                                                                                                                                                                                                                                                                                                                                                                     3. Walk on the train, talk to someone, then choose to arrive at Hospital Night Shift.
+
+                                                                                                                                                                                                                                                                                                                                                                                                                     4. Make 2–3 meaningful choices in that station.
+
+                                                                                                                                                                                                                                                                                                                                                                                                                     5. Ride to Unsent Messages, resolve 1–2 encounters.
+
+                                                                                                                                                                                                                                                                                                                                                                                                                     6. See Impact Track respond to their choices.
+
+                                                                                                                                                                                                                                                                                                                                                                                                                     7. Trigger a short ending with at least 2 epilogue variations.
+
+________________
+
+
+3. AI Autocoder Prompt – Paste This into Cursor / Windsurf / Copilot Chat
+Here’s a full prompt you can drop into your coding assistant to start the vertical slice in TypeScript/web:
+You are an expert game developer AI working as my lead programmer and technical designer.
+
+
+PROJECT OVERVIEW
+I want to build a small vertical slice for a narrative adventure game called “The Midnight Line”.
+
+
+Fantasy:
+- A surreal Aussie after-midnight train where the crew quietly heals one stranger’s heart by travelling through emotional “stations” like REGRET, HOSPITAL NIGHT SHIFT, UNSENT MESSAGES.
+- For this vertical slice, we focus on ONE passenger (a burnt-out paediatric nurse) and TWO stations:
+  1) Hospital Night Shift
+  2) Unsent Messages
+
+
+Tech stack:
+- TypeScript
+- Vite or similar simple dev setup
+- HTML5 / CSS for UI
+- Rendering can be DOM-based (no need for heavy engine yet).
+- Keep it simple, modular, and easy to extend later.
+
+
+HIGH-LEVEL REQUIREMENTS FOR THIS VERTICAL SLICE
+Implement a playable “night” with:
+1. A TITLE SCREEN that can start a new run.
+2. A TRAIN HUB SCENE:
+   - 2.5D-style side-view but you can fake it with simple left/right movement across a single horizontal strip.
+   - The player controls the Conductor character: left/right movement and “interact” button.
+   - One other NPC on the train (Gatherer) with a short dialogue.
+   - A simple UI to “Depart for Hospital Night Shift”.
+3. HOSPITAL NIGHT SHIFT STATION:
+   - New scene with its own background (fluorescent hospital-night aesthetic).
+   - The player can walk a short distance and interact with:
+     a) One echo NPC of the nurse (not labelled as her).
+     b) One environmental object (e.g. a coffee cart, a chart, or a waiting room seat).
+   - At least 2 key CHOICES that affect an IMPACT TRACK (Heart-State) variable.
+4. UNSENT MESSAGES STATION:
+   - New scene where unsent texts/emails appear as floating interactables.
+   - At least 2 interactable message objects and 1 echo NPC.
+   - Another 2–3 choices that adjust the IMPACT TRACK.
+5. IMPACT TRACK SYSTEM:
+   - A global run-level state, with 5 ordered states:
+     0: STUCK
+     1: WAVERING
+     2: SOFTENED
+     3: OPEN
+     4: TURNING_POINT
+   - The player’s choices in both stations should increase or decrease a numeric value that is mapped to one of these states.
+   - Show the current Heart-State in a simple UI element (e.g. a bar or label) in the corner.
+6. ENDING EPILOGUE:
+   - After finishing UNSENT MESSAGES, the player returns briefly to the train or a simple “dawn” screen.
+   - Show a short text epilogue that includes at least TWO variations depending on the final Heart-State:
+     - If the Heart-State reached OPEN or TURNING_POINT:
+       Show an epilogue where the nurse drafts and SENDS a message: “Hey, I’m not okay. Can we talk?”
+     - If the Heart-State is below OPEN (STUCK, WAVERING, or SOFTENED):
+       Show an epilogue where the nurse drafts the message but does NOT send it yet (e.g. it’s left unsent, but there is a sense of tiny progress).
+
+
+CODE ARCHITECTURE GOALS
+Please design this as if it will later expand into a full game:
+- Use a simple but scalable state machine for scenes.
+- Keep data (stations, dialogues, choices) in separate data structures (e.g. JSON-like config/TS objects), so I can add more Stations and Passengers later.
+- Separate:
+  - Core game state (current scene, heart state, etc.)
+  - Rendering/DOM logic
+  - Input handling
+- Avoid frameworks beyond what Vite needs. Just TypeScript + DOM is fine.
+
+
+FOLDER / FILE STRUCTURE (SUGGESTED)
+Please create and explain something like:
+
+
+/src
+  main.ts              -> entry point, bootstraps Game instance
+  game/Game.ts         -> core game controller (scene switching, run state)
+  game/Scene.ts        -> base Scene interface/class
+  game/scenes/TitleScene.ts
+  game/scenes/TrainHubScene.ts
+  game/scenes/HospitalNightShiftScene.ts
+  game/scenes/UnsentMessagesScene.ts
+  game/state/HeartState.ts  -> enum + helper mapping
+  game/state/RunState.ts    -> data about the current passenger and heart score
+  game/ui/UIRenderer.ts     -> draws HUD, heart-state status, prompts
+  data/dialogue.ts          -> dialogue text and choice definitions
+  data/stations.ts          -> station metadata (names, descriptions, etc.)
+  styles.css                -> minimal styling
+
+
+You can adjust file names if you have a better idea, but keep it clean and logical.
+
+
+WHAT TO DO FIRST
+1. Set up a new Vite + TypeScript project from scratch.
+2. Implement:
+   - The HeartState enum and mapping from numeric score to the 5 named states.
+   - A simple Game class that can switch between Scenes.
+   - The TitleScene, TrainHubScene, HospitalNightShiftScene, UnsentMessagesScene as skeletons.
+3. Wire up keyboard controls:
+   - Arrow keys or A/D for left/right.
+   - Space or Enter to interact with highlighted objects/NPCs.
+4. Implement a very basic UIRenderer that:
+   - Shows current scene name.
+   - Shows current Heart-State (as text, eg. “Heart: Softened”).
+5. Add minimal but functional dialogue and choice handling for:
+   - One key encounter in HospitalNightShift that can increase or decrease the heart score based on the player’s choice.
+   - One key encounter in UnsentMessages that also affects the heart score.
+6. Implement the ending logic:
+   - After UnsentMessagesScene completes, transition to an Epilogue scene or overlay that chooses the text based on the Heart-State.
+
+
+CODING STYLE AND QUALITY
+- Use TypeScript types and interfaces for scenes, dialogue nodes, and choices.
+- Keep functions small and focused.
+- Comment core parts of the architecture so I can understand and extend it.
+- Prefer simple, readable code over premature optimisation.
+
+
+DELIVERABLES
+In your response:
+1. Show me the initial file structure.
+2. Provide the full contents of the key files to reach a playable, minimal vertical slice:
+   - main.ts
+   - game/Game.ts
+   - game/Scene.ts
+   - game/state/HeartState.ts
+   - game/state/RunState.ts
+   - game/scenes/TitleScene.ts
+   - game/scenes/TrainHubScene.ts
+   - game/scenes/HospitalNightShiftScene.ts
+   - game/scenes/UnsentMessagesScene.ts
+   - game/scenes/EpilogueScene.ts (or similar)
+   - game/ui/UIRenderer.ts
+   - data/dialogue.ts
+   - index.html
+   - styles.css
+3. Explain how to run the project (e.g. npm install, npm run dev) and how to play through the slice end-to-end.
+
+
+Start by describing the architecture you propose in 1–2 paragraphs, then generate the code.
+
+
+________________
+
+
+If you want, next step after you run this and get it working, we can:
+                                                                                                                                                                                                                                                                                                                                                                                                                        * Add a second crew role (Busker) with a simple “change the music and mood” power, and
+
+                                                                                                                                                                                                                                                                                                                                                                                                                        * Refine the Impact Track visuals so it feels more like that driver’s console dial you imagined.

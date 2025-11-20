@@ -1,0 +1,720 @@
+﻿Prompts 
+
+
+Here’s a first “autocoder” prompt you can drop into Cursor / Windsurf / VS Code AI, etc:
+________________
+
+
+PROMPT FOR AI AUTOPROGRAMMER – “THE MIDNIGHT SUBURBAN LINE” (VERTICAL SLICE)
+You are an expert TypeScript/React game developer.
+Build the first vertical slice of a browser-based narrative game called “The Midnight Suburban Line”.
+High-level vision
+* Genre: surreal urban fantasy, text-first narrative.
+* Platform: single-page web app, runs in a modern browser, works on desktop and mobile.
+* Style: clean, minimal UI (like a modern interactive fiction reader), with subtle atmospheric touches (dark theme, hints of train/suburban imagery), but no heavy graphics needed yet.
+* Core loop for this slice:
+   1. Player sees a title / start screen.
+   2. Player chooses who this night’s train is secretly for (from a few archetypes).
+   3. Player rides through 3 emotional “stations”:
+      * REGRET
+      * UNSENT MESSAGES
+      * BEGINNING AGAIN
+   4. At each station, the player reads a short scene and chooses how the train crew intervenes (2–3 choices).
+   5. Internally, choices modify a simple impact track.
+   6. At the end, the game shows a short epilogue describing a small, grounded change in that person’s daytime life, based on the impact track.
+This is not a combat game. It’s about quietly healing one person’s story.
+________________
+
+
+Tech stack & project setup
+* Use Vite + React + TypeScript.
+* No backend: everything runs client-side.
+* No external state management library (Redux, etc.) – use React state + simple modules.
+* Keep dependencies minimal.
+Create a clean, well-structured project with:
+* src/main.tsx – React entry point.
+* src/App.tsx – top-level app + simple router-like state machine for screens.
+* src/game/ – game-specific logic and data:
+   * gameState.ts – types and core state machine functions.
+   * passengers.ts – definitions of the passenger archetypes for this slice.
+   * stations.ts – data for the 3 stations and their choices.
+* src/components/ – UI components:
+   * TitleScreen.tsx
+   * PassengerSelect.tsx
+   * StationView.tsx
+   * EpilogueView.tsx
+   * Shared UI elements (Button, Layout, etc.).
+________________
+
+
+Game design – vertical slice
+1. Passenger selection
+Create 3 passenger archetypes as data in passengers.ts, each with:
+export type PassengerId = 'burntout_nurse' | 'grieving_parent' | 'lonely_kid';
+
+
+export interface Passenger {
+  id: PassengerId;
+  name: string;              // label shown to player
+  shortDescription: string;  // 1–2 line description
+  prompts: {
+    fear: string;            // what they’re scared of
+    desire: string;          // what they deeply want
+    unsaid: string;          // what they’d never say out loud
+  };
+}
+
+
+Example (you can write the exact text):
+* Burnt-out nurse on paeds ward.
+* Grieving dad who keeps driving at night.
+* Teen who feels invisible at school.
+UI:
+* PassengerSelect shows the three options as cards with name + short description.
+* Player clicks one and presses “Start Night Run”.
+The chosen passenger is stored in game state.
+________________
+
+
+2. Stations & choices
+We will implement exactly 3 stations for this slice:
+1. REGRET
+2. UNSENT_MESSAGES
+3. BEGINNING_AGAIN
+Create types and data in stations.ts:
+export type StationId = 'regret' | 'unsent_messages' | 'beginning_again';
+
+
+export interface StationChoice {
+  id: string;
+  label: string;           // what the player sees as the choice
+  impactDelta: number;     // how this affects the impact track (-1, 0, +1)
+  description: string;     // short narrative feedback used in the log
+}
+
+
+export interface Station {
+  id: StationId;
+  name: string;
+  tagline: string;         // 1-line mood/description
+  introText: string;       // paragraph of scene-setting text
+  choices: StationChoice[];
+}
+
+
+* Write evocative but concise intro text (2–4 sentences) for each station that matches the theme.
+* Each station has 2–3 choices, each with an impactDelta of -1, 0, or +1.
+Example choice (pseudo):
+* Label: “Gently delay the train so one more message can arrive.”
+* impactDelta: +1
+* description: “You feel time bend, just a little, as another unsent text flickers into being…”
+________________
+
+
+3. Game state & impact track
+In gameState.ts:
+Define a GamePhase union:
+export type GamePhase = 'title' | 'passengerSelect' | 'inStations' | 'epilogue';
+* * Track:
+   * phase: GamePhase
+   * selectedPassenger: Passenger | null
+   * currentStationIndex: number
+   * stationOrder: StationId[] (for now, always [ 'regret', 'unsent_messages', 'beginning_again' ])
+   * impactScore: number (start at 0, clamp between e.g. -3 and +3)
+   * A simple log array of events (strings) for later debugging/extension.
+Provide pure helper functions:
+* startNewRun(passengerId: PassengerId): GameState
+* applyStationChoice(state: GameState, choice: StationChoice): GameState
+   * increments impactScore by choice.impactDelta (with clamping)
+   * advances to the next station or epilogue when finished
+   * appends something to the log.
+________________
+
+
+4. Epilogue logic
+In gameState.ts or a separate epilogue.ts, map the final impactScore to one of 3 epilogue variants per passenger:
+* Low (<= -1): They stay stuck for now, but maybe gained a tiny unseen nudge.
+* Middle (0–1): They make one small, hopeful action (text someone, book an appointment, say a hard sentence).
+* High (>= 2): They experience a more noticeable shift (not a miracle, but a real turning point).
+Design the epilogue text templates like:
+interface EpilogueResult {
+  title: string;
+  body: string; // a short 2–4 sentence vignette
+}
+
+
+The body should show a small scene from their daytime life the next day / next week, not explain game mechanics.
+________________
+
+
+UI & UX requirements
+* Overall vibe: dark theme, clean typography, no clutter.
+* Layout:
+   * Centered column, max width ~700px.
+   * Good spacing, buttons large enough for mobile.
+* Accessibility:
+   * Keyboard-focusable buttons.
+   * Avoid tiny tap targets.
+* Simple transitions (e.g. fade between screens) are nice-to-have but not required in this first pass.
+Screens:
+1. TitleScreen
+
+   * Game title.
+   * Small subtitle (one line about the premise).
+   * “Begin Night Run” button → passengerSelect.
+   2. PassengerSelect
+
+      * Cards for each passenger archetype.
+      * Selected card highlight.
+      * “Start Night Run” button enabled once selected → inStations.
+      3. StationView
+
+         * Station name + tagline.
+         * Intro text.
+         * List of choices as big buttons.
+         * After a choice is clicked:
+         * Brief feedback text below (using choice.description).
+         * “Continue” button to move to next station or epilogue.
+         4. EpilogueView
+
+            * Summary title.
+            * Epilogue body text.
+            * Button to “Return to the Depot” → resets game back to title screen.
+________________
+
+
+Coding style & quality
+            * Use TypeScript strictly with proper types, no any.
+            * Use functional, readable React components (function components + hooks).
+            * Keep data (passengers, stations, epilogues) separate from presentation and logic.
+            * Comment non-obvious parts of the game state transitions.
+________________
+
+
+Deliverables in this first iteration
+            1. Fully working Vite + React + TS project.
+            2. Hard-coded 3 passengers, 3 stations, and working choice/impact/epilogue flow.
+            3. Clean minimal UI; no fancy art needed.
+            4. No save/load yet; one run at a time is fine.
+When you’re done, summarise:
+            * The file structure you created.
+            * How to run the project (npm install, npm run dev, etc.).
+            * Any obvious next steps for expanding content (more stations, more passengers, saving, etc.).
+________________
+
+
+Use this prompt to generate all necessary code and files.
+________________
+
+
+Short answer:
+No, don’t scrap them. That React/text-first prompt is still totally valid as a “story-first” vertical slice. It’s actually a perfect Phase 0 build before the more visual AAA version.
+So:
+            * Prompt 1 = your existing idea, slightly cleaned up – use this to get a solid narrative prototype working.
+
+            * Prompt 2 = a follow-up prompt that tells the AI to upgrade that project toward the more AAA-ish “scene-based” game (train hub + stations, more visual structure).
+
+I’ll give you both, ready to paste.
+________________
+
+
+✅ Prompt 1 – Keep & Use This (Story-First Vertical Slice in React)
+This is your “Midnight Suburban Line” / “Midnight Line” text-first version, cleaned up but structurally the same. You can paste this straight into Cursor / Windsurf / VS Code AI.
+________________
+
+
+PROMPT 1 – STORY-FIRST VERTICAL SLICE (REACT + TS)
+You are an expert TypeScript/React game developer.
+
+
+Build the first vertical slice of a browser-based narrative game called
+“The Midnight Suburban Line”.
+
+
+High-level vision
+- Genre: surreal urban fantasy, text-first narrative.
+- Platform: single-page web app, runs in a modern browser, works on desktop and mobile.
+- Style: clean, minimal UI (like a modern interactive fiction reader), with subtle atmospheric touches (dark theme, hints of train/suburban imagery), but no heavy graphics needed yet.
+- Core vibe: this is not a combat game. It’s about quietly healing one person’s story.
+
+
+Core loop for this slice
+- Player sees a title / start screen.
+- Player chooses who this night’s train is secretly for (from a few archetypes).
+- Player rides through 3 emotional “stations”:
+  - REGRET
+  - UNSENT MESSAGES
+  - BEGINNING AGAIN
+- At each station, the player:
+  - reads a short scene,
+  - chooses how the train crew intervenes (2–3 choices).
+- Internally, choices modify a simple impact track.
+- At the end, the game shows a short epilogue describing a small, grounded change in that person’s daytime life, based on the impact track.
+
+
+Tech stack & project setup
+- Use Vite + React + TypeScript.
+- No backend: everything runs client-side.
+- No external state management library (Redux, etc.) – use React state + simple modules.
+- Keep dependencies minimal.
+
+
+Project structure
+Create a clean, well-structured project with something like:
+
+
+  src/main.tsx              – React entry point
+  src/App.tsx               – top-level app + simple router-like state machine for screens
+
+
+  src/game/
+    gameState.ts            – types and core state machine functions
+    passengers.ts           – definitions of the passenger archetypes for this slice
+    stations.ts             – data for the 3 stations and their choices
+    epilogues.ts            – logic and data to map impactScore → epilogue
+
+
+  src/components/
+    TitleScreen.tsx
+    PassengerSelect.tsx
+    StationView.tsx
+    EpilogueView.tsx
+    ui/Button.tsx
+    ui/Layout.tsx
+
+
+  src/styles.css            – global styles, dark theme
+
+
+You can tweak names slightly if needed, but keep it logically grouped.
+
+
+Game design – vertical slice
+
+
+1. Passenger selection
+
+
+In passengers.ts, define three passenger archetypes as data:
+
+
+  export type PassengerId =
+    | 'burntout_nurse'
+    | 'grieving_dad'
+    | 'lonely_teen';
+
+
+  export interface Passenger {
+    id: PassengerId;
+    name: string;              // label shown to player
+    shortDescription: string;  // 1–2 line description
+    prompts: {
+      fear: string;    // what they’re scared of
+      desire: string;  // what they deeply want
+      unsaid: string;  // what they’d never say out loud
+    };
+  }
+
+
+Create 3 passengers, for example:
+- Burnt-out nurse on a paediatric ward (servo coffee, running on fumes).
+- Grieving dad who keeps driving aimlessly at night.
+- Teen who feels invisible at school and online.
+
+
+UI behaviour:
+- <PassengerSelect> shows the three options as cards with name + shortDescription.
+- Player clicks a card to select; selected card is clearly highlighted.
+- “Start Night Run” button is enabled once a passenger is selected.
+- When pressed, the chosen passenger is stored in game state and we move to the stations flow.
+
+
+2. Stations & choices
+
+
+Implement exactly 3 stations for this slice:
+
+
+- REGRET
+- UNSENT_MESSAGES
+- BEGINNING_AGAIN
+
+
+In stations.ts define:
+
+
+  export type StationId =
+    | 'regret'
+    | 'unsent_messages'
+    | 'beginning_again';
+
+
+  export interface StationChoice {
+    id: string;
+    label: string;        // what the player sees as the choice
+    impactDelta: number;  // how this affects the impact track (-1, 0, +1)
+    description: string;  // short narrative feedback used in the UI/log
+  }
+
+
+  export interface Station {
+    id: StationId;
+    name: string;
+    tagline: string;      // 1-line mood/description
+    introText: string;    // 2–4 sentence scene-setting text
+    choices: StationChoice[];
+  }
+
+
+Write evocative but concise introText for each station that matches the theme:
+
+
+- REGRET:
+  - Platforms like cracked photo frames, announcements looping “Next stop: If Only…”
+- UNSENT_MESSAGES:
+  - Air full of floating text bubbles, half-written emails drifting like lanterns.
+- BEGINNING_AGAIN:
+  - New saplings through asphalt, early light on empty platforms.
+
+
+Each station should have 2–3 choices, each with impactDelta -1, 0, or +1.
+
+
+Example choice (for UNSENT_MESSAGES, pseudo):
+
+
+- label: "Gently delay the train so one more message can arrive."
+- impactDelta: +1
+- description: "Time bends, just a little, as another unsent text flickers into being."
+
+
+3. Game state & impact track
+
+
+In gameState.ts define:
+
+
+  export type GamePhase =
+    | 'title'
+    | 'passengerSelect'
+    | 'inStations'
+    | 'epilogue';
+
+
+  export interface GameState {
+    phase: GamePhase;
+    selectedPassenger: Passenger | null;
+    currentStationIndex: number;
+    stationOrder: StationId[]; // for this slice, always ['regret', 'unsent_messages', 'beginning_again']
+    impactScore: number;       // numeric score, start at 0, clamp between -3 and +3
+    log: string[];             // simple event log for debugging/extension
+  }
+
+
+Provide pure helper functions:
+
+
+  startNewRun(passengerId: PassengerId): GameState
+  - Sets phase to 'inStations'.
+  - Sets stationOrder to the 3 fixed stations.
+  - Resets impactScore to 0 and log to [].
+
+
+  applyStationChoice(state: GameState, choice: StationChoice): GameState
+  - Adds choice.impactDelta to impactScore with clamping (-3 to +3).
+  - Appends a short string to log (e.g. stationId + choice.id + description).
+  - If there are more stations:
+      - increments currentStationIndex.
+    Else:
+      - sets phase to 'epilogue'.
+
+
+4. Epilogue logic
+
+
+In epilogues.ts (or gameState.ts), map final impactScore and selectedPassenger to an epilogue result.
+
+
+Define:
+
+
+  export interface EpilogueResult {
+    title: string;
+    body: string;   // a 2–4 sentence vignette
+  }
+
+
+Rules for the impact bands:
+
+
+- Low (impactScore <= -1):
+  - They stay largely stuck, but there’s a very subtle nudge or image of possibility.
+- Middle (impactScore 0–1):
+  - They make one small hopeful action (text someone, book an appointment, admit “I’m not okay”).
+- High (impactScore >= 2):
+  - They experience a noticeable shift (not a miracle, just a real turning point).
+
+
+Write 3 variants per passenger (low/mid/high) and pick the one that matches the score.
+The body should show a small daytime scene (next morning or next week), not mention game mechanics.
+
+
+UI & UX requirements
+
+
+Overall vibe:
+- Dark theme.
+- Clean typography.
+- No clutter.
+
+
+Layout:
+- Centered column, max width ~700px.
+- Good spacing and padding.
+- Buttons large enough and spaced for mobile.
+
+
+Screens:
+
+
+1. TitleScreen
+   - Shows game title + 1-line subtitle about the premise.
+   - “Begin Night Run” button → phase 'passengerSelect'.
+
+
+2. PassengerSelect
+   - Shows cards for each Passenger (name, shortDescription, maybe a 1-line “vibe”).
+   - Allow selection with mouse or keyboard.
+   - “Start Night Run” button → calls startNewRun and moves to phase 'inStations'.
+
+
+3. StationView
+   - Shows:
+     - Station name + tagline.
+     - introText.
+     - List of StationChoice buttons.
+   - When the player clicks a choice:
+     - Apply applyStationChoice(...) to update impactScore and advance station index.
+     - Show choice.description briefly (e.g. as text under the buttons).
+     - Then show a “Continue” button to proceed.
+   - When the last station finishes, move to phase 'epilogue'.
+
+
+4. EpilogueView
+   - Pull EpilogueResult for the selectedPassenger and final impactScore.
+   - Shows epilogue.title and epilogue.body.
+   - Button to “Return to the Depot” → reset the game back to phase 'title'.
+
+
+Accessibility:
+- Buttons keyboard-focusable.
+- Clear focus styles.
+- No tiny tap targets.
+
+
+Coding style & quality
+- Use TypeScript strictly with proper types, no `any`.
+- Use React function components + hooks.
+- Keep data (passengers, stations, epilogues) separate from UI and logic.
+- Comment non-obvious parts of game state transitions.
+
+
+Deliverables in this first iteration
+- Fully working Vite + React + TS project.
+- Hard-coded 3 passengers, 3 stations, and working:
+  - passenger selection,
+  - station progression,
+  - choice/impact/epilogue flow.
+- Clean minimal UI; no fancy art needed.
+- No save/load yet; one run at a time is fine.
+
+
+At the end of your output, please summarise:
+- The file structure you created.
+- How to run the project (npm install, npm run dev, etc.).
+- Obvious next steps for expanding content (more stations, more passengers, saving, meta-progression, etc.).
+
+
+________________
+
+
+🧱 Prompt 2 – “Upgrade This Toward AAA”: More Visual, Scene-Based
+Use this after you have the Prompt 1 project working. This tells the AI to evolve that same codebase toward a more AAA-style, scene-based structure (train hub + station scenes), without throwing away the text-first work.
+________________
+
+
+PROMPT 2 – UPGRADE TO SCENES & TRAIN HUB (MORE AAA-LIKE)
+You are the same expert TypeScript/React game developer who just built the initial
+“The Midnight Suburban Line” project:
+
+
+- Vite + React + TypeScript
+- Title → PassengerSelect → 3 Stations → Epilogue
+- Data modules: passengers.ts, stations.ts, epilogues.ts
+- Game state in gameState.ts
+- Components: TitleScreen, PassengerSelect, StationView, EpilogueView, etc.
+
+
+Now I want you to UPGRADE this project to be a more “AAA-indie” style prototype,
+with a clearer sense of places and scenes.
+
+
+IMPORTANT: 
+- Do NOT throw away the existing working game.
+- Refactor and extend it so it has a more explicit scene system and a simple
+  “train hub” between stations.
+
+
+High-level design for this upgrade
+
+
+1. Introduce a scene-layer abstraction
+- Currently, App.tsx probably switches phase via simple conditional rendering.
+- I want a more explicit model of “scenes”:
+  - 'title'
+  - 'passengerSelect'
+  - 'trainHub'
+  - 'station'
+  - 'epilogue'
+- Extend GamePhase accordingly, and make the transitions explicit.
+- Keep it all still in React state (no external state library).
+
+
+2. Add a Train Hub scene between stations
+- After the player selects a passenger and starts the run:
+  - They first see a “Train Hub” view instead of going straight to REGRET.
+- Train Hub behaviour:
+  - Shows a 2.5D-style “implied” train carriage using layout:
+    - e.g. a horizontal strip representing the carriage, with a simple text avatar
+      for the Conductor and maybe one other crew member (e.g. a Gatherer).
+  - The player does NOT need free-form movement yet, but:
+    - They should see “carriage slots” (like simple cards) that represent:
+      - Conductor (main player point-of-view)
+      - Companion (e.g. Gatherer)
+      - The next station as a “destination board”
+  - Simple interactions:
+      - A short line of dialogue from the crew about the chosen passenger
+        (using the passenger prompts).
+      - A “Depart for next station” button.
+- Every time the player returns from a station, they briefly come back to the Train Hub:
+  - Log an entry in the “run log” (e.g. “Leaving REGRET with the Heart at Softened”).
+  - Allow a short line of new crew dialogue that reacts to current impactScore.
+  - Then let the player continue to the next station.
+
+
+3. StationView as a more cinematic “scene”
+- Refine StationView into something closer to a “scene panel”:
+  - The station “header” (name + tagline + maybe a simple icon).
+  - One paragraph of intro text (from stations.ts).
+  - The choices as buttons.
+  - A small “context line” that references the current Passenger slightly, without
+    naming them directly (optional, but nice).
+- After the player picks a choice:
+  - Apply impactDelta as you already do.
+  - Show the choice.description as a short “beat”.
+  - Instead of going directly to the next station, go back to the Train Hub scene,
+    which then leads on to the next station.
+
+
+4. Make the impact track more visible & atmospheric
+- Currently, impactScore/Heart-state is probably just text.
+- Upgrade it to:
+  - A small horizontal “dial” or segmented bar in a corner:
+    - 5 segments matching states: STUCK, WAVERING, SOFTENED, OPEN, TURNING POINT.
+  - Colour or brightness should correspond to the current state (but keep colours simple).
+- Add a small helper utility, e.g. getHeartState(impactScore) returning a type:
+    type HeartState = 'STUCK' | 'WAVERING' | 'SOFTENED' | 'OPEN' | 'TURNING_POINT';
+- Use this HeartState type in:
+  - UI (label and style).
+  - Optional flavour text in Train Hub and StationView.
+
+
+5. Visual polish within reason (still mostly text)
+- Keep this as a text-first project, but:
+  - Use CSS to give each Station a slightly different background:
+    - REGRET → darker, cracked texture vibe (can be simple gradients or repeated patterns).
+    - UNSENT MESSAGES → subtle floating “bubble” background or pattern.
+    - BEGINNING AGAIN → a hint of dawn light and greens.
+  - Use CSS classes applied based on the current stationId to control backgrounds.
+
+
+6. Maintain clean separation of concerns
+- Do not cram everything into App.tsx.
+- Introduce a small module (if needed) for:
+  - heartState.ts: mapping impactScore → HeartState + label + CSS class.
+- Make sure:
+  - gameState.ts still holds core logic.
+  - components remain mostly presentational, using props and callbacks.
+
+
+Concrete implementation tasks
+
+
+1. Update types in gameState.ts:
+   - Extend GamePhase to include 'trainHub' and 'station'.
+   - Track:
+     - currentStationIndex
+     - currentScenePhase: 'trainHub' vs 'station' (if you prefer a nested representation).
+
+
+2. Implement a new TrainHubView component:
+   - Lives in src/components/TrainHubView.tsx.
+   - Props should include:
+     - selectedPassenger
+     - currentStation (Station)
+     - heartState information (from helper)
+     - run log snippet (optional)
+     - callback for “depart to station”
+   - Render:
+     - A simple carriage layout using divs and CSS.
+     - 1–2 short lines of crew dialogue that reference:
+       - passenger.prompts (fear/desire/unsaid)
+       - current HeartState
+     - A “Depart” button.
+
+
+3. Adjust App.tsx (or the top-level component) to:
+   - Route through phases:
+     - 'title' → 'passengerSelect' → 'trainHub' → 'station' → 'trainHub' → ... → 'epilogue'
+   - Use the existing StationView and EpilogueView with minimal changes, but:
+     - After finishing a station, transition to 'trainHub' instead of directly to the next station.
+
+
+4. Upgrade the impact track UI:
+   - Create a HeartStateIndicator component (e.g. src/components/HeartStateIndicator.tsx).
+   - Use it in TrainHubView and StationView.
+   - Give each HeartState:
+     - a label
+     - a CSS class (e.g. heart-stuck, heart-open, etc.)
+
+
+5. Style tweaks:
+   - In styles.css, introduce:
+     - per-station background classes (e.g. .station-regret, .station-unsent_messages, .station-beginning_again).
+     - simple layout for the “train carriage” in TrainHubView.
+
+
+Deliverables
+- Updated project files with:
+  - TrainHubView component added.
+  - HeartStateIndicator component added.
+  - Extended GamePhase and state transitions.
+  - Station flow now passing through Train Hub between each station.
+  - Basic but clear visual differences between stations.
+- Please show:
+  - Any new or changed TypeScript interfaces/types.
+  - Updated App.tsx (or main view coordinator).
+  - New components and any key CSS additions.
+
+
+At the end of your response, summarise:
+- How the new scene flow works (from title to epilogue).
+- Which files you modified or added.
+- Suggested next AAA-style upgrades (e.g. simple character avatars, subtle animations, sound hooks).
+
+
+________________
+
+
+If you want, next step after this could be a Prompt 3 that adds actual character movement, simple sprites, and sound hooks – but I’d let you get these two phases working first so you can feel your way into it.
+________________

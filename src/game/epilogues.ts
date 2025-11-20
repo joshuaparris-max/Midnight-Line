@@ -3,6 +3,48 @@ import { PassengerId } from './passengers';
 export interface EpilogueResult { title: string; body: string }
 
 const EPILOGUES: Record<PassengerId, { low: EpilogueResult; mid: EpilogueResult; high: EpilogueResult }> = {
+  signaler: {
+    low: {
+      title: 'Signals Missed',
+      body: 'The night passes with only routine checks. No alarms, no praise. But a colleague nods in passing, and the silence feels less lonely.'
+    },
+    mid: {
+      title: 'A Trusted Night',
+      body: 'A message arrives: "Thanks for keeping watch." The next shift feels lighter, and the signals seem clearer.'
+    },
+    high: {
+      title: 'Recognition',
+      body: 'A supervisor asks for advice, and the signaler shares a story. The night feels like it matters.'
+    }
+  },
+  wiper: {
+    low: {
+      title: 'Same Old View',
+      body: 'The windows are clean, but the scenery never changes. Still, a child waves from the platform, and the wiper smiles.'
+    },
+    mid: {
+      title: 'A New Horizon',
+      body: 'A sunrise catches the wiper off guard. For a moment, the glass shows something new.'
+    },
+    high: {
+      title: 'Reflections Shift',
+      body: 'A passenger thanks the wiper for the clear view. The world outside seems full of possibility.'
+    }
+  },
+  busker: {
+    low: {
+      title: 'Empty Carriage',
+      body: 'The music echoes, but no one claps. Later, a cleaner hums the tune, and the busker feels heard.'
+    },
+    mid: {
+      title: 'A Listener Found',
+      body: 'A passenger lingers after the song and asks for the name. The busker shares it, and the night feels warmer.'
+    },
+    high: {
+      title: 'Moved Someone',
+      body: 'A small crowd gathers, and someone wipes away a tear. The busker plays on, knowing the music mattered.'
+    }
+  },
   burntout_nurse: {
     low: {
       title: 'A Quiet Shift',
