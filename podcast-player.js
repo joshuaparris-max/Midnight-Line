@@ -36,6 +36,7 @@
       this.open = false;
       this.currentIndex = 0;
       this.recent = [];
+      this.frameLoaded = false;
 
       try {
         const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
@@ -49,7 +50,9 @@
     }
 
     connectedCallback() {
-      this.render();
+      this.renderShell();
+      this.updateEpisode(false);
+      this.setOpen(false);
     }
 
     save() {
@@ -69,16 +72,18 @@
         this.recent = [previous, ...this.recent.filter((index) => index !== previous)].slice(0, 6);
       }
       this.save();
+      this.updateEpisode(true);
     }
 
-    render() {
-      const current = episodes[this.currentIndex];
+    renderShell() {
       this.shadowRoot.innerHTML = `
         <style>
           :host{position:relative;z-index:2147483000;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
           button,a{font:inherit}
           .launcher{position:fixed;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:2147483000;border:1px solid rgba(148,163,184,.45);border-radius:999px;background:rgba(15,23,42,.97);color:#fff;padding:12px 18px;font-weight:800;box-shadow:0 12px 34px rgba(2,6,23,.45);cursor:pointer;touch-action:manipulation;white-space:nowrap}
-          .panel{position:fixed;left:50%;bottom:max(8px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:2147483000;width:min(620px,calc(100vw - 16px));box-sizing:border-box;border:1px solid rgba(148,163,184,.45);border-radius:18px;background:rgba(15,23,42,.98);color:#fff;padding:14px;box-shadow:0 20px 60px rgba(2,6,23,.65)}
+          .launcher[hidden]{display:none!important}
+          .panel{position:fixed;left:50%;bottom:max(8px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:2147483000;width:min(620px,calc(100vw - 16px));box-sizing:border-box;border:1px solid rgba(148,163,184,.45);border-radius:18px;background:rgba(15,23,42,.98);color:#fff;padding:14px;box-shadow:0 20px 60px rgba(2,6,23,.65);transition:opacity .16s ease,transform .16s ease,visibility .16s ease}
+          .panel.collapsed{opacity:0;visibility:hidden;pointer-events:none;transform:translateX(-50%) translateY(12px)}
           .head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
           .kicker{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#93c5fd}
           .title{font-size:16px;line-height:1.3;margin:4px 0 0}
@@ -92,38 +97,53 @@
           .note{font-size:11px;color:#94a3b8;margin:9px 0 0}
           @media(max-width:640px){.panel{width:calc(100vw - 10px);padding:11px}.actions>*{flex:1;justify-content:center;text-align:center}}
         </style>
-        ${this.open ? `
-          <aside class="panel" aria-label="Midnight Line podcast player">
-            <div class="head"><div><div class="kicker">Midnight Line · narrative game radio</div><h2 class="title"></h2><p class="meta"></p></div><button class="close" type="button" aria-label="Close podcast player">×</button></div>
-            <iframe class="frame" title="Spotify podcast episode" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-            <div class="actions"><button class="action different" type="button">🎲 Different podcast</button><a class="link" target="_blank" rel="noopener noreferrer">Open in Spotify ↗</a></div>
-            <p class="note">The episode plays inside Midnight Line. Spotify may require you to press Play once.</p>
-          </aside>` : '<button class="launcher" type="button" aria-label="Open narrative game podcasts">🎧 Podcasts</button>'}
+        <button class="launcher" type="button" aria-label="Open narrative game podcasts">🎧 Podcasts</button>
+        <aside class="panel collapsed" aria-label="Midnight Line podcast player" aria-hidden="true">
+          <div class="head"><div><div class="kicker">Midnight Line · narrative game radio</div><h2 class="title"></h2><p class="meta"></p></div><button class="close" type="button" aria-label="Minimise podcast player">×</button></div>
+          <iframe class="frame" title="Spotify podcast episode" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <div class="actions"><button class="action different" type="button">🎲 Different podcast</button><a class="link" target="_blank" rel="noopener noreferrer">Open in Spotify ↗</a></div>
+          <p class="note">Close only minimises the player — audio keeps playing while you continue the game.</p>
+        </aside>
       `;
 
-      if (!this.open) {
-        this.shadowRoot.querySelector('.launcher').addEventListener('click', () => {
-          this.open = true;
-          this.render();
-        });
-        return;
+      this.shadowRoot.querySelector('.launcher').addEventListener('click', () => this.setOpen(true));
+      this.shadowRoot.querySelector('.close').addEventListener('click', () => this.setOpen(false));
+      this.shadowRoot.querySelector('.different').addEventListener('click', () => this.chooseDifferent());
+    }
+
+    setOpen(value) {
+      this.open = !!value;
+      const panel = this.shadowRoot.querySelector('.panel');
+      const launcher = this.shadowRoot.querySelector('.launcher');
+      if (!panel || !launcher) return;
+
+      if (this.open && !this.frameLoaded) {
+        this.updateEpisode(true);
       }
 
-      this.shadowRoot.querySelector('.title').textContent = current.title;
-      this.shadowRoot.querySelector('.meta').textContent = `${current.show} · ${current.tags.join(' · ')}`;
+      panel.classList.toggle('collapsed', !this.open);
+      panel.setAttribute('aria-hidden', String(!this.open));
+      launcher.hidden = this.open;
+    }
+
+    updateEpisode(loadFrame) {
+      const current = episodes[this.currentIndex];
+      const title = this.shadowRoot.querySelector('.title');
+      const meta = this.shadowRoot.querySelector('.meta');
       const frame = this.shadowRoot.querySelector('.frame');
-      frame.src = `https://open.spotify.com/embed/episode/${encodeURIComponent(current.id)}?theme=0`;
-      frame.title = `Spotify episode: ${current.title}`;
       const link = this.shadowRoot.querySelector('.link');
+      if (!title || !meta || !frame || !link) return;
+
+      title.textContent = current.title;
+      meta.textContent = `${current.show} · ${current.tags.join(' · ')}`;
       link.href = `https://open.spotify.com/episode/${encodeURIComponent(current.id)}`;
-      this.shadowRoot.querySelector('.close').addEventListener('click', () => {
-        this.open = false;
-        this.render();
-      });
-      this.shadowRoot.querySelector('.different').addEventListener('click', () => {
-        this.chooseDifferent();
-        this.render();
-      });
+
+      if (loadFrame || this.frameLoaded) {
+        const nextSrc = `https://open.spotify.com/embed/episode/${encodeURIComponent(current.id)}?theme=0`;
+        if (frame.src !== nextSrc) frame.src = nextSrc;
+        frame.title = `Spotify episode: ${current.title}`;
+        this.frameLoaded = true;
+      }
     }
   }
 
